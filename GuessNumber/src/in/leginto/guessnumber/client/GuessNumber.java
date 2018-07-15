@@ -7,27 +7,32 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
-import com.google.gwt.user.client.ui.TextBox;
 
 
 public class GuessNumber implements EntryPoint {
+	
+	@Override
 	public void onModuleLoad() {
 		
 		
-		final TextBox textBox = new TextBox();
-		final Button btn = new Button("Submit");
-		final Label lb = new Label("Enter your Name!");
+		//final TextBox textBox = new TextBox();
+		final Button btn = new Button("Proceed");
+		final Label lb = new Label();
 		
 		
 		
 		RootPanel.get("div4").add(lb);
-		RootPanel.get("div2").add(textBox);
+		//RootPanel.get("div2").add(textBox);
 		RootPanel.get("div3").add(btn);
 		
-		String name = textBox.getValue();
+		//final String name = textBox.getText().toString();
+		final int res = 10+((int)(Math.random()*10))*4;
+		final int assume = 10+((int)(Math.random()*10))*2;
+		
+		lb.setText("Press \"Proceed\" to play a game.");
 		
 		
-		final Button btn2 = new Button("Submit");
+		final Button btn2 = new Button("Proceed");
 		
 		RootPanel.get("div3").add(btn2);
 		
@@ -38,11 +43,10 @@ public class GuessNumber implements EntryPoint {
 			
 			@Override
 			public void onClick(ClickEvent event) {
-				// TODO Auto-generated method stub
-				textBox.setVisible(false);
+				
 				
 				btn.setEnabled(false);
-				lb.setText("Imagine a number between 0 and 10");
+				lb.setText("Imagine a number between 0 and "+assume);
 				
 				
 				btn.setVisible(false);
@@ -54,7 +58,7 @@ public class GuessNumber implements EntryPoint {
 		
 		
 		
-		final Button btn3 = new Button("Submit");
+		final Button btn3 = new Button("Proceed");
 		
 		RootPanel.get("div3").add(btn3);
 		
@@ -84,7 +88,7 @@ public class GuessNumber implements EntryPoint {
 		
 		
 		
-		final Button btn4 = new Button("Submit");
+		final Button btn4 = new Button("Proceed");
 		
 		RootPanel.get("div3").add(btn4);
 		
@@ -99,7 +103,7 @@ public class GuessNumber implements EntryPoint {
 				// TODO Auto-generated method stub
 				
 				btn3.setEnabled(false);
-				lb.setText("Add 40 to the result");
+				lb.setText("Add "+res+" to the result");
 				
 				
 				btn3.setVisible(false);
@@ -113,7 +117,7 @@ public class GuessNumber implements EntryPoint {
 		
 		
 
-		final Button btn5 = new Button("Submit");
+		final Button btn5 = new Button("Proceed");
 		
 		RootPanel.get("div3").add(btn5);
 		
@@ -142,7 +146,7 @@ public class GuessNumber implements EntryPoint {
 		
 		
 		
-		final Button btn6 = new Button("Submit");
+		final Button btn6 = new Button("Proceed");
 		
 		RootPanel.get("div3").add(btn6);
 		
@@ -168,7 +172,13 @@ public class GuessNumber implements EntryPoint {
 			}
 		});
 		
-		//String last = "Hey! ";//+name+". Your answer is ";
+		
+		final Button btn7 = new Button("Retry");
+		
+		RootPanel.get("div3").add(btn7);
+		
+		btn7.setVisible(false);
+		
 		
 		
 		btn6.addClickHandler(new ClickHandler() {
@@ -177,18 +187,36 @@ public class GuessNumber implements EntryPoint {
 			public void onClick(ClickEvent event) {
 				// TODO Auto-generated method stub
 				
-				btn6.setEnabled(false);
-				lb.setVisible(false);
-				
-				
+				//btn6.setEnabled(false);
 				btn6.setVisible(false);
 				
-				//btn6.setVisible(true);
+				lb.setText("Your final answer is "+res/2);
+				//lb.setVisible(false);
+				btn7.setVisible(true);
+				
+				
 				
 				
 			}
 		});
 		
+		
+		btn7.addClickHandler(new ClickHandler() {
+			
+			@Override
+			public void onClick(ClickEvent event) {
+				// TODO Auto-generated method stub
+				
+				
+				btn7.setVisible(false);
+				
+				lb.setText("This key dont work, reload the page");
+				
+				
+				
+				
+			}
+		});
 		
 		
 		
